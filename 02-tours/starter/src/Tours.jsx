@@ -1,22 +1,28 @@
 import Tour from "./Tour";
 
-function Tours({ tours, onHandleDeleteTour }) {
+function Tours({ tours, removeTour }) {
   return (
     <section>
-      {tours.map((tour) => {
-        const { name, info, image, price } = tour;
-        return (
-          <Tour
-            onHandleDeleteTour={onHandleDeleteTour}
-            key={tour.id}
-            name={name}
-            info={info}
-            image={image}
-            price={price}
-            {...tour}
-          />
-        );
-      })}
+      <div className="title">
+        <h2>Our tours</h2>
+        <div className="title-underline"></div>
+      </div>
+      <div className="tours">
+        {tours.map((tour) => {
+          const { id, name, info, image, price } = tour;
+          return (
+            <Tour
+              key={id}
+              id={id}
+              name={name}
+              info={info}
+              image={image}
+              price={price}
+              removeTour={removeTour}
+            />
+          );
+        })}
+      </div>
     </section>
   );
 }
